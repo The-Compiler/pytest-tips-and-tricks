@@ -1,0 +1,19 @@
+cookiecutter
+# devpi-client
+flake8
+hypothesis
+Pygments
+pytest
+pytest-cov
+pytest-instafail
+pytest-rich
+pytest-mock
+pytest-xdist
+pytest-recording
+pytest-httpserver
+PyYAML
+Sphinx
+tox
+ipytest
+requests
+responses

@@ -1,0 +1,81 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - rpncalc/0.1 (florian@bruhin.software)
+    method: GET
+    uri: https://api.exchangerate.host/convert?from=EUR&to=CHF
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA0zPzU7DMAwH8FexzDVbS/nOFYHgisQDmNRtw9q4xM7GNO3dUTjtZFn/n235hItY
+        j/6Ei47o8X2AoxSQXEuGIMtK6QhFGWyKCmuWbw5WwRx3DIeJDA4MvcQ0OlhnJmUIkjT2nOGLwi6m
+        EYqCSnWBUk0tpsKwUExGMVVBqQfey7yvzeWpLToseUaPk9mqvmn4N0yURs5kvJ1ErblqeklkjGeH
+        WkJgVfSWCzv8KZyP9b8hy4IeXz4/0KEJenx+e0WHtEhJhv767DCmQaqtm9G326eHx7uuBlNUkxwD
+        zegHmpUd9v8Gu7a72bS3m+4eHWbWMtvF5B8AAAD//wMAnqrdoF8BAAA=
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, Methods
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Origin:
+      - '*'
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7bde29fa88c33b51-GVA
+      Cache-Control:
+      - max-age=31536000
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 26 Apr 2023 10:32:49 GMT
+      ETag:
+      - W/"15f-Gucv3QiOBZJaqeNxNaeNNIlfMtY"
+      NEL:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=jvPv6kLw0O62p4284SDi5RUhfc2jA%2BiMigEw0Y8Lv46OOjkFpAbo%2BmCjyJmnQ7Ybu1cRtPEqBsf3gIAvGvaK64ARKxgwUkPdjBR1CycXyp71dAkn4QKLLDN7B%2Fzibt1aTqNpPxdbFwY6hVyj6QCWDADzT4w%3D"}],"group":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-DNS-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Forwarded-For:
+      - api.exchangerate.host
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-RateLimit-Limit:
+      - '2000'
+      X-RateLimit-Remaining:
+      - '1986'
+      X-XSS-Protection:
+      - 1; mode=block
+      alt-svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    status:
+      code: 200
+      message: OK
+version: 1

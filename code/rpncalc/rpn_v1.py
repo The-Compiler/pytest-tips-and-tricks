@@ -1,0 +1,31 @@
+# rpncalc/rpn_v1.py
+
+from rpncalc.utils import calc
+
+class RPNCalculator:
+
+    def __init__(self):
+        self.stack = []
+
+    def run(self):
+        while True:
+            inp = input('> ')
+            if inp == 'q':
+                return
+            self.evaluate(inp)
+
+    def evaluate(self, inp):
+        if inp.isdigit():
+            n = float(inp)
+            self.stack.append(n)
+        elif inp in '+-*/':
+            b = self.stack.pop()
+            a = self.stack.pop()
+            res = calc(a, b, inp)
+            self.stack.append(res)
+            print(res)
+
+
+if __name__ == "__main__":
+    rpn = RPNCalculator()
+    rpn.run()
