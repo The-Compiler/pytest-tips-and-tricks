@@ -2,11 +2,11 @@ from pathlib import Path
 import pytest
 from rpncalc.utils import Config
 
+
 @pytest.fixture
 def config():
     return Config()
 
-# fixtures/test_builtin_tmp_path.py
 
 @pytest.fixture
 def config_path(tmp_path: Path) -> Path:
@@ -19,10 +19,8 @@ def test_config_load(
     config_path: Path, config: Config
 ):
     print(config_path)
-    assert False   # to show output
+    assert False  # to show output
 
 
-def test_config_save(
-    tmp_path: Path, config: Config
-):
+def test_config_save(tmp_path: Path, config: Config):
     ...

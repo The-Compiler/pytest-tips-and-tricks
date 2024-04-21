@@ -4,6 +4,6 @@ def func1(double):
         value *= 2
     return value
 
-def func2():
-    return 5/0
 
+def func2():
+    return 5 / 0

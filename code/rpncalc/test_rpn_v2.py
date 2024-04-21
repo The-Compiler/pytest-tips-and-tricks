@@ -3,7 +3,6 @@ import pytest
 from rpncalc.rpn_v2 import RPNCalculator
 from rpncalc.utils import Config
 
-# rpncalc/test_rpn_v2.py
 
 def test_complex_example():
     rpn = RPNCalculator(Config())
@@ -26,9 +25,16 @@ def test_stack_push():
     rpn.evaluate("2")
     assert rpn.stack == [1, 2]
 
-@pytest.mark.parametrize("op, expected", [
-    ("+", 3), ("-", -1), ("*", 2), ("/", 0.5),
-])
+
+@pytest.mark.parametrize(
+    "op, expected",
+    [
+        ("+", 3),
+        ("-", -1),
+        ("*", 2),
+        ("/", 0.5),
+    ],
+)
 def test_operations(op, expected):
     rpn = RPNCalculator(Config())
     rpn.stack = [1, 2]
@@ -36,8 +42,7 @@ def test_operations(op, expected):
     assert rpn.stack == [expected]
 
 
-@pytest.mark.parametrize(
-    "n", [1.5, -1])
+@pytest.mark.parametrize("n", [1.5, -1])
 def test_number_input(rpn, n):
     rpn.evaluate(str(n))
     assert rpn.stack == [n]

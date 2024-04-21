@@ -2,8 +2,6 @@ from hypothesis import given
 from hypothesis.strategies import text
 
 
-# plugins/test_hypothesis.py
-
 def decode(lst: list[tuple[int, str]]) -> str:
     s = ""
     for count, character in lst:

@@ -1,9 +1,8 @@
-# mocking/test_real.py
-
 import pytest
 
 from rpncalc.utils import Config
 from rpncalc.rpn_v3 import RPNCalculator
+
 
 @pytest.fixture
 def rpn() -> RPNCalculator:

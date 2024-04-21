@@ -5,8 +5,8 @@ from rpncalc.convert import Converter
 # mocking/converter/
 # test_monkeypatch.py
 
-class FakeResponse:
 
+class FakeResponse:
     def __init__(self, data):
         self._data = data
 
@@ -19,9 +19,10 @@ class FakeResponse:
 
 def fake_get(url: str, params: dict, headers: dict) -> FakeResponse:
     assert url == Converter.API_URL
-    assert params == {"from": "EUR", "to": "CHF"}
+    assert params == {"codes": ["EUR"]}
     assert headers == {"User-Agent": Converter.USER_AGENT}
-    return FakeResponse({"success": True, "result": 2})
+    rates = [{"code": "chf", "rate": 2}]
+    return FakeResponse({"data": [{"code": "eur", "rates": rates}]})
 
 
 @pytest.fixture(autouse=True)

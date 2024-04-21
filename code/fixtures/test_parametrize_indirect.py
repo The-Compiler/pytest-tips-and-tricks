@@ -1,7 +1,6 @@
 import pytest
 from rpncalc.utils import Config
 
-# fixtures/test_parametrize_indirect.py
 
 @pytest.fixture
 def config(request):
@@ -10,7 +9,7 @@ def config(request):
 
 @pytest.mark.parametrize(
     "config, length", [
-        (">", 1), ("(rpn)", 5),
+        (">", 1), ("rpn>", 5),
     ],
     indirect=["config"],
 )

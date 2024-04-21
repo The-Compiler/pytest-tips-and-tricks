@@ -1,5 +1,3 @@
-# mocking/test_fake_mock.py
-
 import pytest
 import pytest_mock
 
@@ -7,7 +5,6 @@ from rpncalc.utils import Config
 from rpncalc.rpn_v3 import RPNCalculator
 from rpncalc.convert import Converter
 
-# test_fake_mock.py
 
 @pytest.fixture
 def rpn(mocker: pytest_mock.MockerFixture) -> RPNCalculator:

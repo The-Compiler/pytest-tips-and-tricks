@@ -1,7 +1,6 @@
 from hypothesis import given, strategies as st
 from rpncalc.rpn_v3 import RPNCalculator, Config
 
-# plugins/test_hypothesis_rpncalc_v3.py
 
 @given(st.integers(), st.integers())
 def test_operators(n1, n2):
@@ -26,4 +25,3 @@ def test_usage(inputs):
     rpn = RPNCalculator(Config())
     for inp in inputs:
         rpn.evaluate(inp)
-

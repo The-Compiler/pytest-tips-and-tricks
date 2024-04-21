@@ -1,17 +1,16 @@
 import pytest
 from typing import Iterator
 
-class Client:
 
+class Client:
     def connect(self):
-        print("Connecting...")
+        print("\nConnecting...")
 
     def disconnect(self):
-        print("Disconnecting...")
+        print("\nDisconnecting...")
 
-# fixtures/test_yield_fixture.py
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def connected_client() -> Iterator[Client]:
     client = Client()
     client.connect()

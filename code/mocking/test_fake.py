@@ -1,12 +1,10 @@
-# mocking/test_fake.py
-
 import pytest
 
 from rpncalc.utils import Config
 from rpncalc.rpn_v3 import RPNCalculator
 
-class FakeConverter:
 
+class FakeConverter:
     RATE = 2
 
     def eur2chf(self, amount: float) -> float:
@@ -17,12 +15,16 @@ class FakeConverter:
 
 
 @pytest.fixture
-def rpn(monkeypatch: pytest.MonkeyPatch) -> RPNCalculator:
-    rpn = RPNCalculator(Config())
-    monkeypatch.setattr(rpn, "converter", FakeConverter())
-    return rpn
+def rpn(monkeypatch):
+    calc = RPNCalculator(Config())
+    monkeypatch.setattr(
+        calc,
+        "converter",
+        FakeConverter()
+    )
+    return calc
 
-def test_convert(rpn: RPNCalculator):
+def test_convert(rpn):
     rpn.stack = [10]
     rpn.evaluate("eur2chf")
     assert rpn.stack == [20]

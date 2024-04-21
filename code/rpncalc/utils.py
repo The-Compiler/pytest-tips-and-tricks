@@ -1,21 +1,21 @@
-import pathlib, configparser, os
+import pathlib
+import configparser
+import os
 
-# rpncalc/utils.py
 
 def calc(a, b, op):
-    if op == '+':
+    if op == "+":
         return a + b
-    elif op == '-':
+    elif op == "-":
         return a - b
-    elif op == '*':
+    elif op == "*":
         return a * b
-    elif op == '/':
+    elif op == "/":
         return a / b
     raise ValueError("Invalid operator")
 
 
 class Config:
-
     def __init__(self, prompt=">"):
         self.prompt = prompt
 

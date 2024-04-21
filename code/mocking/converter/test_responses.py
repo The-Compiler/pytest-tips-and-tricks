@@ -1,16 +1,16 @@
 import pytest
 from rpncalc.convert import Converter
 
-# mocking/converter/test_responses.py
 from responses import RequestsMock, matchers
 
 @pytest.fixture(autouse=True)
 def patch_requests_get(responses: RequestsMock) -> None:
-    params = {"from": "EUR", "to": "CHF"}
+    params = {"codes": "EUR"}
     headers = {"User-Agent": Converter.USER_AGENT}
+    rates = [{"code": "chf", "rate": 2}]
     responses.get(
         Converter.API_URL,
-        json={"success": True, "result": 2},
+        json={"data": [{"code": "eur", "rates": rates}]},
         match=[
             matchers.query_param_matcher(params),
             matchers.header_matcher(headers),
@@ -38,6 +38,7 @@ def converter() -> Converter:
 
 def test_eur2chf(converter: Converter):
     assert converter.eur2chf(1) == 2
+
 
 def test_chf2eur(converter: Converter):
     assert converter.chf2eur(1) == 0.5

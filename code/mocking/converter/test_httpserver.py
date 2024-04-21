@@ -3,20 +3,20 @@ import pytest_httpserver
 import urllib.parse
 from rpncalc.convert import Converter
 
-# mocking/converter/test_httpserver.py
+
 @pytest.fixture
 def server_url(httpserver: pytest_httpserver.HTTPServer):
     url_path = urllib.parse.urlparse(Converter.API_URL).path
 
     req = httpserver.expect_request(
-        url_path,
-        query_string={"from": "EUR", "to": "CHF"},
+        url_path, query_string={"codes": "EUR"},
         headers={"User-Agent": Converter.USER_AGENT},
     )
-    req.respond_with_json({"success": True, "result": 2})
+    rates = [{"code": "chf", "rate": 2}]
+    data = {"data": [{"code": "eur", "rates": rates}]}
+    req.respond_with_json(data)
 
     yield httpserver.url_for(url_path)
-
     httpserver.check()
 
 

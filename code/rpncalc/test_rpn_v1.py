@@ -2,7 +2,6 @@ import pytest
 
 from rpncalc.rpn_v1 import RPNCalculator
 
-# rpncalc/test_rpn_v1.py
 
 def test_complex_example():
     rpn = RPNCalculator()
@@ -43,6 +42,7 @@ def test_unknown_operator():
     rpn.evaluate("**")
     # FIXME how do we test that this printed an error?
 
+
 @pytest.mark.skip(reason="TODO: Error handling")
 def test_division_by_zero():
     rpn = RPNCalculator()
@@ -59,6 +59,7 @@ def test_not_enough_operands():
 
     rpn.evaluate("+")
     # FIXME how do we test that this printed an error?
+
 
 @pytest.mark.skip(reason="FIXME: Should this be possible?")
 def test_float_input():

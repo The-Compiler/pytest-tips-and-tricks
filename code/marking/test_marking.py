@@ -1,7 +1,6 @@
 import pytest
 import time
 
-# marking/test_marking.py
 
 @pytest.mark.slow
 @pytest.mark.webtest

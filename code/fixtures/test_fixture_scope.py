@@ -2,7 +2,6 @@ import pytest
 import time
 from rpncalc.rpn_v2 import RPNCalculator, Config
 
-# fixtures/test_fixture_scope.py
 
 @pytest.fixture(scope="function")
 def rpn() -> RPNCalculator:

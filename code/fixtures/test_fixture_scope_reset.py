@@ -2,12 +2,12 @@ import pytest
 import time
 from rpncalc.rpn_v2 import RPNCalculator, Config
 
-# fixtures/test_fixture_scope_reset.py
 
 @pytest.fixture(scope="module")
 def rpn_instance() -> RPNCalculator:
     time.sleep(2)
     return RPNCalculator(Config())
+
 
 @pytest.fixture
 def rpn(

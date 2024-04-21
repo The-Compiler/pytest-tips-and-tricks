@@ -1,9 +1,8 @@
-# rpncalc/convert.py
 import requests
 
-class Converter:
 
-    API_URL = "https://api.exchangerate.host/convert"
+class Converter:
+    API_URL = "https://api.exchangeit.app/rates/latest"
     USER_AGENT = "rpncalc/0.1 (florian@bruhin.software)"
 
     def __init__(self) -> None:
@@ -21,13 +20,18 @@ class Converter:
 
     def _fetch(self) -> float:
         print("Fetching exchange rates...")
-        params = {"from": "EUR", "to": "CHF"}
+        params = {"codes": ["EUR"]}
         headers = {"User-Agent": self.USER_AGENT}
         response = requests.get(
             self.API_URL,
             params=params,
-            headers=headers)
+            headers=headers,
+        )
         response.raise_for_status()
-        data = response.json()
-        assert data["success"], data
-        return data["result"]
+        d = response.json()
+        rates = d["data"][0]["rates"]
+        rates_dict = {
+            rate["code"]: rate["rate"]
+            for rate in rates
+        }
+        return rates_dict["chf"]

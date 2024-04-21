@@ -1,5 +1,3 @@
-# plugins/test_hypothesis_rpncalc_v1.py
-
 from hypothesis import given, strategies as st
 from rpncalc.rpn_v1 import RPNCalculator
 
