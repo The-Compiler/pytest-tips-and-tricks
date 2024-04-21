@@ -7,7 +7,7 @@
     - Open the `code/` folder as a project
     - Tell it to install `requirements.txt`
     - Open a terminal inside PyCharm and make sure things work by running
-      `pytest --version`, you should see 7.4 ideally (7.0+ is ok)
+      `pytest --version`, you should see 8.1.x ideally (7.0+ is ok)
 - Manual setup:
     - [Create a virtualenv](https://chriswarrick.com/blog/2018/09/04/python-virtual-environments/) and activate it (or substitute tool paths below)
     - `pip install -r code/requirements.txt`
@@ -18,5 +18,5 @@
     - [`@thecompiler` on Telegram](https://telegram.me/thecompiler)
     - [`florian@bruhin.software`](mailto:florian@bruhin.software)
     - IRC: `The-Compiler` on [Libera Chat](https://libera.chat/)
-    - [`@the_compiler` on Discord](https://discord.com/users/329364263896481802) (e.g. Python Discord or Europython 2023 Discord)
-    - [`@the_compiler` on Twitter](https://twitter.com/the_compiler)
+    - [`@the_compiler` on Discord](https://discord.com/users/329364263896481802) (e.g. Python Discord or PyConDE)
+    - [`@the_compiler` on Twitter/X](https://twitter.com/the_compiler)
