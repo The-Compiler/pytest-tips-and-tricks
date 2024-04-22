@@ -2,9 +2,6 @@
 
 ## Note
 
-The code in `code/` is still WIP until Monday ~noon, unfortunately a few minor
-last-minute changes are expected. Slides will be added around that time as well.
-
 The provided code is for 3 days of training, so we're not going to use all of
 it. If you want to prepare, take a look at `rpncalc/` (especially `rpn_v2.py`
 and `utils.py`), which is a small example project we'll use in the training.
