@@ -19,6 +19,9 @@ class Config:
     def __init__(self, prompt=">"):
         self.prompt = prompt
 
+    def __repr__(self) -> str:
+        return f"Config(prompt={self.prompt!r})"
+
     def load(self, path: pathlib.Path) -> None:
         parser = configparser.ConfigParser()
         parser.read(path)
