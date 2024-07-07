@@ -9,7 +9,7 @@ def config(request):
 
 @pytest.mark.parametrize(
     "config, length", [
-        (">", 1), ("rpn>", 5),
+        (">", 1), ("rpn>", 4),
     ],
     indirect=["config"],
 )

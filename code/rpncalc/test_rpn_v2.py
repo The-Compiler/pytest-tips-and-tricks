@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 
 from rpncalc.rpn_v2 import RPNCalculator
@@ -43,20 +45,15 @@ def test_operations(op, expected):
 
 
 @pytest.mark.parametrize("n", [1.5, -1])
-def test_number_input(rpn, n):
+def test_number_input(n):
+    rpn = RPNCalculator(Config())
     rpn.evaluate(str(n))
     assert rpn.stack == [n]
 
 
-@pytest.mark.parametrize("op", ["**", "+-"])
-def test_unknown_operator(rpn, op):
+@pytest.mark.parametrize(
+    "op", ["**", "+-"])
+def test_unknown_operator(op: str):
+    rpn = RPNCalculator(Config())
     rpn.stack = [1, 2]
-    rpn.evaluate(op)  # FIXME how to test that this prints an error?
-
-def test_division_by_zero(rpn):
-    rpn.stack = [1, 0]
-    rpn.evaluate("/")  # FIXME how to test that this prints an error?
-
-def test_not_enough_operands(rpn):
-    rpn.stack = [1]
-    rpn.evaluate("+")  # FIXME how to test that this prints an error?
+    rpn.evaluate(op)

@@ -5,16 +5,16 @@ from rpncalc.convert import Converter
 
 
 @pytest.fixture
-def server_url(httpserver: pytest_httpserver.HTTPServer):
+def server_url(
+    httpserver: pytest_httpserver.HTTPServer, exchange_data: dict
+):
     url_path = urllib.parse.urlparse(Converter.API_URL).path
 
     req = httpserver.expect_request(
-        url_path, query_string={"codes": "EUR"},
-        headers={"User-Agent": Converter.USER_AGENT},
+        url_path, query_string=Converter.PARAMS,
+        headers=Converter.HEADERS,
     )
-    rates = [{"code": "chf", "rate": 2}]
-    data = {"data": [{"code": "eur", "rates": rates}]}
-    req.respond_with_json(data)
+    req.respond_with_json(exchange_data)
 
     yield httpserver.url_for(url_path)
     httpserver.check()
@@ -22,7 +22,7 @@ def server_url(httpserver: pytest_httpserver.HTTPServer):
 
 @pytest.fixture
 def converter(
-    server_url: str,  # e.g. http://localhost:41475/convert
+    server_url: str,  # e.g. http://localhost:41475/v1/currencies/...
     monkeypatch: pytest.MonkeyPatch,
 ) -> Converter:
     conv = Converter()

@@ -17,5 +17,8 @@ def connected_client() -> Iterator[Client]:
     yield client
     client.disconnect()
 
-def test_client(connected_client: Client):
-    print("in the test")
+def test_client_1(connected_client: Client):
+    print("in the test 1")
+
+def test_client_2(connected_client: Client):
+    print("in the test 2")

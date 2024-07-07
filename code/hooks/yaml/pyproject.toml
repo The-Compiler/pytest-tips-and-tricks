@@ -1,0 +1,43 @@
+[build-system]
+requires = [
+  "setuptools>=61.0.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytest-yamlcalc"
+description = "yaml-based rpn calculator tests"
+version = "0.1.0"
+readme = "README.rst"
+requires-python = ">=3.8"
+authors = [
+    { name = "yourname", email = "you@example.com" },
+]
+maintainers = [
+    { name = "yourname", email = "you@example.com" },
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "Framework :: Pytest",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Testing",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "pytest>=7.0.0",
+]
+[project.urls]
+Repository = "https://github.com/yourname/pytest-yamlcalc"
+[project.entry-points.pytest11]
+yamlcalc = "pytest_yamlcalc.plugin"

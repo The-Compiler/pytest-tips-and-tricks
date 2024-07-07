@@ -1,37 +1,35 @@
 import requests
 
+try:
+    from functools import cache
+except ImportError:
+    # Python 3.7 / 3.8
+    from functools import lru_cache
+    cache = lru_cache(maxsize=None)
+
 
 class Converter:
-    API_URL = "https://api.exchangeit.app/rates/latest"
-    USER_AGENT = "rpncalc/0.1 (florian@bruhin.software)"
-
-    def __init__(self) -> None:
-        self._eur2chf_rate = None
+    API_URL = "https://api.exchangeit.app/v1/currencies/eur/latest"
+    HEADERS = {"User-Agent": "rpncalc/0.1 (florian@bruhin.software)"}
+    PARAMS = {"for": "chf"}
 
     def eur2chf(self, amount: float) -> float:
-        if self._eur2chf_rate is None:
-            self._eur2chf_rate = self._fetch()
-        return amount * self._eur2chf_rate
+        eur2chf_rate = self._fetch()
+        return amount * eur2chf_rate
 
     def chf2eur(self, amount: float) -> float:
-        if self._eur2chf_rate is None:
-            self._eur2chf_rate = self._fetch()
-        return amount / self._eur2chf_rate
+        eur2chf_rate = self._fetch()
+        return amount / eur2chf_rate
 
+    @cache
     def _fetch(self) -> float:
         print("Fetching exchange rates...")
-        params = {"codes": ["EUR"]}
-        headers = {"User-Agent": self.USER_AGENT}
         response = requests.get(
             self.API_URL,
-            params=params,
-            headers=headers,
+            params=self.PARAMS,
+            headers=self.HEADERS,
         )
         response.raise_for_status()
         d = response.json()
-        rates = d["data"][0]["rates"]
-        rates_dict = {
-            rate["code"]: rate["rate"]
-            for rate in rates
-        }
-        return rates_dict["chf"]
+        rates = d["data"]["rates"]
+        return rates[0]["rate"]

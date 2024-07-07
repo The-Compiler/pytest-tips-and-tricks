@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 def pytest_report_header() -> list[str]:
     return ["extrainfo: line 1"]
 

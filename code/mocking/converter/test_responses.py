@@ -4,16 +4,15 @@ from rpncalc.convert import Converter
 from responses import RequestsMock, matchers
 
 @pytest.fixture(autouse=True)
-def patch_requests_get(responses: RequestsMock) -> None:
-    params = {"codes": "EUR"}
-    headers = {"User-Agent": Converter.USER_AGENT}
-    rates = [{"code": "chf", "rate": 2}]
+def patch_requests_get(
+    responses: RequestsMock, exchange_data: dict
+) -> None:
     responses.get(
         Converter.API_URL,
-        json={"data": [{"code": "eur", "rates": rates}]},
+        json=exchange_data,
         match=[
-            matchers.query_param_matcher(params),
-            matchers.header_matcher(headers),
+            matchers.query_param_matcher(Converter.PARAMS),
+            matchers.header_matcher(Converter.HEADERS),
         ],
     )
 

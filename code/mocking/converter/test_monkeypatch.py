@@ -19,10 +19,10 @@ class FakeResponse:
 
 def fake_get(url: str, params: dict, headers: dict) -> FakeResponse:
     assert url == Converter.API_URL
-    assert params == {"codes": ["EUR"]}
-    assert headers == {"User-Agent": Converter.USER_AGENT}
-    rates = [{"code": "chf", "rate": 2}]
-    return FakeResponse({"data": [{"code": "eur", "rates": rates}]})
+    assert params == Converter.PARAMS
+    assert headers == Converter.HEADERS
+    rates = [{"alias": "chf", "rate": 2}]
+    return FakeResponse({"data": {"alias": "eur", "rates": rates}})
 
 
 @pytest.fixture(autouse=True)

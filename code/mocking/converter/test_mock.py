@@ -6,16 +6,18 @@ from rpncalc.convert import Converter
 
 
 @pytest.fixture(autouse=True)
-def mock_requests_get(mocker: pytest_mock.MockerFixture):
-    rates = [{"code": "chf", "rate": 2}]
-    data = {"data": [{"code": "eur", "rates": rates}]}
+def mock_requests_get(
+    mocker: pytest_mock.MockerFixture,
+    exchange_data: dict,
+):
     mock_get = mocker.patch.object(requests, "get", autospec=True)
-    mock_get(Converter.API_URL).json.return_value = data
+    mock_get(Converter.API_URL).json.return_value = exchange_data
     yield mock_get
     mock_get.assert_called_with(
         Converter.API_URL,
-        params={"codes": ["EUR"]},
-        headers={"User-Agent": Converter.USER_AGENT})
+        params=Converter.PARAMS,
+        headers=Converter.HEADERS
+    )
 
 
 @pytest.fixture

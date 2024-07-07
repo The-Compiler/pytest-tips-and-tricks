@@ -25,7 +25,8 @@ def test_stack_push():
     assert rpn.stack == [1, 2]
 
 @pytest.mark.parametrize("op, expected", [
-    ("+", 3), ("-", -1), ("*", 2), ("/", 0.5),
+    ("+", 3), ("-", -1),
+    ("*", 2), ("/", 0.5),
 ])
 def test_operations(op, expected):
     rpn = RPNCalculator()

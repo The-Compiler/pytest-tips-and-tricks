@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+import sys
+
 from rpncalc.utils import calc, Config
 
 class RPNCalculator:
@@ -5,11 +9,11 @@ class RPNCalculator:
         self.config = config
         self.stack = []
 
-    def get_inputs(self):
+    def get_inputs(self) -> list[str]:
         inp = input(self.config.prompt + " ")
         return inp.split()
 
-    def run(self):
+    def run(self) -> None:
         while True:
             for inp in self.get_inputs():
                 if inp == "q":
@@ -19,7 +23,10 @@ class RPNCalculator:
                 else:
                     self.evaluate(inp)
 
-    def evaluate(self, inp):
+    def err(self, msg: str) -> None:
+        print(msg, file=sys.stderr)
+
+    def evaluate(self, inp: str) -> None:
         try:
             self.stack.append(float(inp))
             return
@@ -27,11 +34,12 @@ class RPNCalculator:
             pass
 
         if inp not in ["+", "-", "*", "/"]:
-            print(f"Invalid input: {inp}")
+            self.err(
+                f"Invalid input: {inp}")
             return
 
         if len(self.stack) < 2:
-            print("Not enough operands")
+            self.err("Not enough operands")
             return
 
         b = self.stack.pop()
@@ -40,7 +48,7 @@ class RPNCalculator:
         try:
             res = calc(a, b, inp)
         except ZeroDivisionError:
-            print("Division by zero")
+            self.err("Division by zero")
             return
 
         self.stack.append(res)
@@ -49,5 +57,6 @@ class RPNCalculator:
 
 if __name__ == "__main__":
     config = Config()
+    config.load_env()
     rpn = RPNCalculator(config)
     rpn.run()

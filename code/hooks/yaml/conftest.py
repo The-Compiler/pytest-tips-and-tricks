@@ -19,8 +19,8 @@ def pytest_collect_file(
 ) -> pytest.Collector | None:
     """Hook into pytest to collect test*.yml files."""
     if (
-        file_path.suffix == ".yml"
-        and file_path.name.startswith("test")
+        file_path.name.startswith("test")
+        and file_path.suffix == ".yml"
     ):
         return YamlFile.from_parent(parent, path=file_path)
     return None

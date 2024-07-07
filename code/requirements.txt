@@ -1,19 +1,31 @@
-cookiecutter
-# devpi-client
-flake8
-hypothesis
-Pygments
+## Basics
 pytest
+Pygments
+
+## Hypothesis
+hypothesis
+
+## Mocking
+pytest-mock
+pytest-recording
+pytest-httpserver
+requests
+responses
+
+## Writing plugins / plugin tour
+cookiecutter
 pytest-cov
 pytest-instafail
 pytest-rich
-pytest-mock
 pytest-xdist
-pytest-recording
-pytest-httpserver
+pytest-asyncio
 PyYAML
+
+## tox / devpi optional chapters
 Sphinx
 tox
-ipytest
-requests
-responses
+# devpi-client
+
+## Live-demos with Jupyter notebooks
+# ipytest
+# jupyterlab

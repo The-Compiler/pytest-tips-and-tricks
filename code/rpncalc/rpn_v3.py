@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from rpncalc.utils import calc, Config
 from rpncalc.convert import Converter
 
@@ -8,11 +10,11 @@ class RPNCalculator:
         self.config = config
         self.stack = []
 
-    def get_inputs(self):
+    def get_inputs(self) -> list[str]:
         inp = input(self.config.prompt + " ")
         return inp.split()
 
-    def run(self):
+    def run(self) -> None:
         while True:
             for inp in self.get_inputs():
                 if inp == "q":
@@ -22,7 +24,7 @@ class RPNCalculator:
                 else:
                     self.evaluate(inp)
 
-    def _evaluate_convert(self, inp):
+    def _evaluate_convert(self, inp: str) -> None:
         try:
             amount = self.stack.pop()
         except IndexError:
@@ -37,7 +39,7 @@ class RPNCalculator:
         self.stack.append(res)
         print(f"{res:.2f}")
 
-    def evaluate(self, inp):
+    def evaluate(self, inp: str) -> None:
         try:
             self.stack.append(float(inp))
             return
@@ -70,5 +72,6 @@ class RPNCalculator:
 
 if __name__ == "__main__":
     config = Config()
+    config.load_env()
     rpn = RPNCalculator(config)
     rpn.run()

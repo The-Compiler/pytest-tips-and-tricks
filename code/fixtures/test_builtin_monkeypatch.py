@@ -1,5 +1,6 @@
 import os
 import sys
+import getpass
 import pytest
 
 
@@ -17,3 +18,21 @@ def test_a(monkeypatch: pytest.MonkeyPatch):
 def test_b():
     print_info()
     assert False
+
+
+def get_folder_name() -> str:
+    user = getpass.getuser()
+    return f"pytest-of-{user}"
+
+
+def fake_getuser() -> str:
+    return "fakeuser"
+
+def test_get_folder_name(monkeypatch: pytest.MonkeyPatch):
+    monkeypatch.setattr(getpass, "getuser", fake_getuser)
+    assert get_folder_name() == "pytest-of-fakeuser"
+
+
+def test_get_folder_name_lambda(monkeypatch: pytest.MonkeyPatch):
+    monkeypatch.setattr(getpass, "getuser", lambda: "fakeuser")
+    assert get_folder_name() == "pytest-of-fakeuser"

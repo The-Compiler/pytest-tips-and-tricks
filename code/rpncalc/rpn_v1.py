@@ -1,10 +1,10 @@
 from rpncalc.utils import calc
 
 class RPNCalculator:
-    def __init__(self):
+    def __init__(self) -> None:
         self.stack = []
 
-    def run(self):
+    def run(self) -> None:
         while True:
             inp = input("> ")
             if inp == "q":
@@ -14,7 +14,7 @@ class RPNCalculator:
             else:
                 self.evaluate(inp)
 
-    def evaluate(self, inp):
+    def evaluate(self, inp: str):
         if inp.isdigit():
             n = float(inp)
             self.stack.append(n)
