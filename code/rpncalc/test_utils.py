@@ -14,23 +14,34 @@ def config():
 def ini_path(tmp_path: Path) -> Path:
     return tmp_path / "rpncalc.ini"
 
+
 @pytest.fixture
-def config_path(ini_path: Path) -> Path:
-    contents = (
+def example_ini(ini_path: Path) -> Path:
+    # creates rpncalc.ini with pathlib
+    ini_path.write_text(
         "[rpncalc]\n"
-        "prompt = rpn>"
-    )
-    ini_path.write_text(contents)
+        "prompt = rpn>\n")
     return ini_path
 
 
-def test_config_load(config_path: Path, config: Config):
+# exercise: [load-save]
+
+def test_config_load(
+    example_ini: Path, config: Config
+):
     # call config.load(...), ensure that the prompt is set to "rpn>"
     ...
 
 
-def test_config_save(ini_path: Path, config: Config):
-    # call config.save(...), ensure that the ini file is written correctly
+def test_config_save(
+    ini_path: Path, config: Config
+):
+    # call config.save(...), ensure that
+    # the ini file is written correctly
     ...
 
 
+# exercise: [cwd]
+
+
+# exercise: [implicit]

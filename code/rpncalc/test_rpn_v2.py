@@ -1,9 +1,10 @@
-from __future__ import annotations
-
 import pytest
 
 from rpncalc.rpn_v2 import RPNCalculator
 from rpncalc.utils import Config
+
+
+# exercise: [fixtures]
 
 
 def test_complex_example():
@@ -28,6 +29,7 @@ def test_stack_push():
     assert rpn.stack == [1, 2]
 
 
+# exercise: [fixtures]
 @pytest.mark.parametrize(
     "op, expected",
     [
@@ -37,7 +39,7 @@ def test_stack_push():
         ("/", 0.5),
     ],
 )
-def test_operations(op, expected):
+def test_operations(op: str, expected: float):
     rpn = RPNCalculator(Config())
     rpn.stack = [1, 2]
     rpn.evaluate(op)
@@ -45,15 +47,24 @@ def test_operations(op, expected):
 
 
 @pytest.mark.parametrize("n", [1.5, -1])
-def test_number_input(n):
+def test_number_input(n: float):
     rpn = RPNCalculator(Config())
     rpn.evaluate(str(n))
     assert rpn.stack == [n]
 
 
+def test_number_input_invalid():
+    rpn = RPNCalculator(Config())
+    rpn.evaluate("²")
+    assert not rpn.stack
+
+
 @pytest.mark.parametrize(
-    "op", ["**", "+-"])
+    "op", ["@", "+-"])
 def test_unknown_operator(op: str):
     rpn = RPNCalculator(Config())
     rpn.stack = [1, 2]
     rpn.evaluate(op)
+
+
+# exercise: [monkeypatch]

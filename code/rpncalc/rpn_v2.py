@@ -57,6 +57,6 @@ class RPNCalculator:
 
 if __name__ == "__main__":
     config = Config()
-    config.load_env()
+    config.load_cwd()
     rpn = RPNCalculator(config)
     rpn.run()

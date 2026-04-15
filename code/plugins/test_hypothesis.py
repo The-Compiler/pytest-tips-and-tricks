@@ -4,27 +4,29 @@ from hypothesis import given
 from hypothesis.strategies import text
 
 
-def decode(lst: list[tuple[int, str]]) -> str:
-    s = ""
-    for count, character in lst:
-        s += count * character
-    return s
+def decode(inp: list[tuple[int, str]]) -> str:
+    out = ""
+    for count, character in inp:
+        out += count * character
+    return out
 
+
+# exercise: [hypothesis]
 
 def encode(input_string: str) -> list[tuple[int, str]]:
-    count = 1; prev = ""; lst = []
+    count = 1; prev = ""; out = []
     for character in input_string:
         if character != prev:
             if prev:
                 entry = (count, prev)
-                lst.append(entry)
+                out.append(entry)
             count = 1
             prev = character
         else:
             count += 1
     entry = (count, character)
-    lst.append(entry)
-    return lst
+    out.append(entry)
+    return out
 
 
 @given(text())

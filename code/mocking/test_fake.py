@@ -14,6 +14,7 @@ class FakeConverter:
         return amount / self.RATE
 
 
+# exercise: [injection]
 @pytest.fixture
 def rpn(monkeypatch):
     calc = RPNCalculator(Config())

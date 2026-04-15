@@ -1,7 +1,0 @@
-- name: adding-stack
-  inputs: ["10", "20"]
-  stack: [10, 20]
-
-- name: simple-addition
-  inputs: ["10", "5", "+"]
-  stack: [15]

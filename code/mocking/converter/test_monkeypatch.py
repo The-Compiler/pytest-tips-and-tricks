@@ -17,26 +17,26 @@ class FakeResponse:
         return self._data
 
 
-def fake_get(url: str, params: dict, headers: dict) -> FakeResponse:
+def fake_get(
+    url: str, params: dict, headers: dict, timeout: float
+) -> FakeResponse:
     assert url == Converter.API_URL
     assert params == Converter.PARAMS
     assert headers == Converter.HEADERS
+    assert timeout == Converter.TIMEOUT
     rates = [{"alias": "chf", "rate": 2}]
     return FakeResponse({"data": {"alias": "eur", "rates": rates}})
 
 
-@pytest.fixture(autouse=True)
-def patch_requests_get(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(requests, "get", fake_get)
-
-
 @pytest.fixture
-def converter() -> Converter:
+def converter(monkeypatch: pytest.MonkeyPatch) -> Converter:
+    monkeypatch.setattr(requests, "get", fake_get)
     return Converter()
 
 
 def test_eur2chf(converter: Converter):
     assert converter.eur2chf(1) == 2
+
 
 def test_chf2eur(converter: Converter):
     assert converter.chf2eur(1) == 0.5

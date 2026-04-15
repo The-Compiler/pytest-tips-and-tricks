@@ -9,9 +9,13 @@ except ImportError:
 
 
 class Converter:
-    API_URL = "https://api.exchangeit.app/v1/currencies/eur/latest"
-    HEADERS = {"User-Agent": "rpncalc/0.1 (florian@bruhin.software)"}
+    API_URL = "https://api.exchangeit.app/v2/currencies/eur/latest"
+    HEADERS = {
+        "Accept": "application/json",
+        "User-Agent": "rpncalc/0.1 (freya@bruhin.software)",
+    }
     PARAMS = {"for": "chf"}
+    TIMEOUT = 5
 
     def eur2chf(self, amount: float) -> float:
         eur2chf_rate = self._fetch()
@@ -28,6 +32,7 @@ class Converter:
             self.API_URL,
             params=self.PARAMS,
             headers=self.HEADERS,
+            timeout=self.TIMEOUT,
         )
         response.raise_for_status()
         d = response.json()

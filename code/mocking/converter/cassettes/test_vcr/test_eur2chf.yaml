@@ -3,27 +3,27 @@ interactions:
     body: null
     headers:
       Accept:
-      - '*/*'
+      - application/json
       Accept-Encoding:
       - gzip, deflate
       Connection:
       - keep-alive
       User-Agent:
-      - rpncalc/0.1 (florian@bruhin.software)
+      - rpncalc/0.1 (freya@bruhin.software)
     method: GET
-    uri: https://api.exchangeit.app/v1/currencies/eur/latest?for=chf
+    uri: https://api.exchangeit.app/v2/currencies/eur/latest?for=chf
   response:
     body:
       string: '{"copyright":{"title":"Thank you for choosing Exchange It API","description":"We''re
         excited to see the incredible things you''ll achieve with it. If you have
-        any questions or need support, our team is here to help.","url":"https://exchangeit.app","email":"hello@exchangeit.app"},"data":{"alias":"eur","title":"Euro","rates":[{"alias":"chf","rate":0.9771274994,"date":"2024-05-09T23:59:59.000Z","fluctuation":0.0009838531}]}}'
+        any questions or need support, our team is here to help.","url":"https://exchangeit.app","email":"hello@exchangeit.app"},"data":{"alias":"eur","code":"eur","title":"Euro","rates":[{"alias":"chf","rate":0.9587439179,"code":"chf","date":"2025-03-18T23:59:59.000Z","fluctuation":0.0199734549}]}}'
     headers:
       Access-Control-Allow-Origin:
       - '*'
-      CF-Cache-Status:
-      - DYNAMIC
       CF-RAY:
-      - 881a44a6593730e8-FRA
+      - 929f35dff90f916e-FRA
+      Cf-Cache-Status:
+      - DYNAMIC
       Connection:
       - keep-alive
       Content-Encoding:
@@ -31,17 +31,15 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 10 May 2024 13:27:41 GMT
-      ETag:
-      - W/"1a7-5bjLyp+Adq71WOtkIUH/xusZt48"
-      NEL:
-      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-      Report-To:
-      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=%2BS8Xai1sOQG1zRIvBXAJIyI8qR3IkmrZW1ev8RtwenpUGWfrBntCQvGHU0cQhJd1WXlLU8LqRMn0wjE6LIKJ2LAUL5g4GxPlnM2kf0lOFmpDDoD6yR9Jng766xdXd80mq08wAYNy5OdWLDcnpDm9p1E%3D"}],"group":"cf-nel","max_age":604800}'
+      - Wed, 02 Apr 2025 09:13:28 GMT
+      Etag:
+      - W/"1c1-5ld9R/xTIUS2nAMa9h85BDwHi6I"
       Server:
       - cloudflare
       Transfer-Encoding:
       - chunked
+      X-Cache:
+      - HIT
       X-Powered-By:
       - Express
       X-Served-By:

@@ -12,20 +12,32 @@ pytest-httpserver
 requests
 responses
 
-## Writing plugins / plugin tour
-cookiecutter
+## Plugin tour
 pytest-cov
 pytest-instafail
-pytest-rich
+pytest-md
+pytest-reportlog
 pytest-xdist
 pytest-asyncio
+# Problematic for various reasons:
+# - Doesn't install correctly in PyCharm for some people (?)
+# - Needs pylib, which results in a deprecation warning
+# - Pulls in pytest-metadata, which is a bit verbose in its pytest_report_header
+#   output
+# pytest-html
+# Loads automatically and thus interferes with output
+# pytest-modern
+
+# Writing plugins
+cookiecutter
 PyYAML
 
 ## tox / devpi optional chapters
-Sphinx
-tox
+# Sphinx
+# tox
 # devpi-client
 
 ## Live-demos with Jupyter notebooks
+ipykernel  # allows participants to view notebooks in VS Code
 # ipytest
 # jupyterlab

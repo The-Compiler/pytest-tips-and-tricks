@@ -7,12 +7,14 @@ from responses import RequestsMock, matchers
 def patch_requests_get(
     responses: RequestsMock, exchange_data: dict
 ) -> None:
+    request_kwargs = {"timeout": Converter.TIMEOUT}
     responses.get(
         Converter.API_URL,
         json=exchange_data,
         match=[
             matchers.query_param_matcher(Converter.PARAMS),
             matchers.header_matcher(Converter.HEADERS),
+            matchers.request_kwargs_matcher(request_kwargs),
         ],
     )
 

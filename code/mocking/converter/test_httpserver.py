@@ -1,13 +1,16 @@
+from typing import Iterator
+import urllib.parse
+
 import pytest
 import pytest_httpserver
-import urllib.parse
+
 from rpncalc.convert import Converter
 
 
 @pytest.fixture
 def server_url(
     httpserver: pytest_httpserver.HTTPServer, exchange_data: dict
-):
+) -> Iterator[str]:
     url_path = urllib.parse.urlparse(Converter.API_URL).path
 
     req = httpserver.expect_request(
@@ -22,7 +25,7 @@ def server_url(
 
 @pytest.fixture
 def converter(
-    server_url: str,  # e.g. http://localhost:41475/v1/currencies/...
+    server_url: str,  # e.g. http://localhost:41475/v2/currencies/...
     monkeypatch: pytest.MonkeyPatch,
 ) -> Converter:
     conv = Converter()

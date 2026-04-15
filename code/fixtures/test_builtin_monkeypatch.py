@@ -24,12 +24,14 @@ def get_folder_name() -> str:
     user = getpass.getuser()
     return f"pytest-of-{user}"
 
-
 def fake_getuser() -> str:
     return "fakeuser"
 
 def test_get_folder_name(monkeypatch: pytest.MonkeyPatch):
-    monkeypatch.setattr(getpass, "getuser", fake_getuser)
+    monkeypatch.setattr(
+        getpass, "getuser",  # target, "name"
+        fake_getuser         # value
+    )
     assert get_folder_name() == "pytest-of-fakeuser"
 
 

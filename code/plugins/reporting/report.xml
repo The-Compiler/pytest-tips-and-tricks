@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="0.018" timestamp="2025-02-18T19:31:01.500593+01:00" hostname="fawkes"><testcase classname="plugins.reporting.test_rep" name="test_ok" time="0.000" /><testcase classname="plugins.reporting.test_rep" name="test_bad" time="0.000"><failure message="ZeroDivisionError: division by zero">def test_bad():
+&gt;       1/0
+E       ZeroDivisionError: division by zero
+
+test_rep.py:6: ZeroDivisionError</failure></testcase><testcase classname="plugins.reporting.test_rep" name="test_custom" time="0.000"><properties><property name="example_key" value="1" /></properties></testcase></testsuite></testsuites>

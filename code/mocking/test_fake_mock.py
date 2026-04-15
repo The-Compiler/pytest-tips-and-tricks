@@ -9,13 +9,14 @@ from rpncalc.convert import Converter
 @pytest.fixture
 def rpn(mocker: pytest_mock.MockerFixture) -> RPNCalculator:
     mock = mocker.Mock(spec=Converter)
-    mock.eur2chf.return_value = 20
-    mock.chf2eur.return_value = 5
     return RPNCalculator(config=Config(), converter=mock)
 
 def test_convert(rpn: RPNCalculator):
+    rpn.converter.eur2chf.return_value = 20
+    rpn.converter.chf2eur.return_value = 5
     rpn.stack = [10]
-    rpn.evaluate("eur2chf")
-    assert rpn.stack == [20]
 
+    rpn.evaluate("eur2chf")
+
+    assert rpn.stack == [pytest.approx(20)]
     rpn.converter.eur2chf.assert_called_once_with(10)

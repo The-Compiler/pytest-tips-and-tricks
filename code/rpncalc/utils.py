@@ -1,6 +1,5 @@
 import pathlib
 import configparser
-import os
 
 
 def calc(a, b, op):
@@ -24,7 +23,8 @@ class Config:
 
     def load(self, path: pathlib.Path) -> None:
         parser = configparser.ConfigParser()
-        parser.read(path)
+        with path.open("r") as f:
+            parser.read_file(f)
         self.prompt = parser["rpncalc"]["prompt"]
 
     def save(self, path: pathlib.Path) -> None:
@@ -33,14 +33,9 @@ class Config:
         with path.open("w") as f:
             parser.write(f)
 
-    def load_env(self) -> None:
-        var = "RPNCALC_CONFIG_DIR"
-        config_dir = os.environ.get(var)
-        if not config_dir:
-            return
-        path = pathlib.Path(config_dir)
-        ini_path = path / "rpncalc.ini"
-        if not ini_path.exists():
-            raise FileNotFoundError(
-                f"{ini_path} not found")
-        self.load(ini_path)
+    def load_cwd(self) -> bool:
+        ini = pathlib.Path.cwd() / "rpncalc.ini"
+        if ini.exists():
+            self.load(ini)
+            return True
+        return False

@@ -1,13 +1,17 @@
 from __future__ import annotations
 
+import sys
+
 from rpncalc.utils import calc, Config
 from rpncalc.convert import Converter
 
 
+# exercise: [injection]
+
 class RPNCalculator:
     def __init__(self, config):
-        self.converter = Converter()
         self.config = config
+        self.converter = Converter()
         self.stack = []
 
     def get_inputs(self) -> list[str]:
@@ -24,11 +28,14 @@ class RPNCalculator:
                 else:
                     self.evaluate(inp)
 
+    def err(self, msg: str) -> None:
+        print(msg, file=sys.stderr)
+
     def _evaluate_convert(self, inp: str) -> None:
         try:
             amount = self.stack.pop()
         except IndexError:
-            print("Not enough operands")
+            self.err("Not enough operands")
             return
 
         if inp == "eur2chf":
@@ -50,11 +57,11 @@ class RPNCalculator:
             self._evaluate_convert(inp)
             return
         elif inp not in ["+", "-", "*", "/"]:
-            print(f"Invalid input: {inp}")
+            self.err(f"Invalid input: {inp}")
             return
 
         if len(self.stack) < 2:
-            print("Not enough operands")
+            self.err("Not enough operands")
             return
 
         b = self.stack.pop()
@@ -63,7 +70,7 @@ class RPNCalculator:
         try:
             res = calc(a, b, inp)
         except ZeroDivisionError:
-            print("Division by zero")
+            self.err("Division by zero")
             return
 
         self.stack.append(res)
@@ -72,6 +79,6 @@ class RPNCalculator:
 
 if __name__ == "__main__":
     config = Config()
-    config.load_env()
+    config.load_cwd()
     rpn = RPNCalculator(config)
     rpn.run()

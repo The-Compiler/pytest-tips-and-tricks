@@ -3,27 +3,25 @@ interactions:
     body: null
     headers:
       Accept:
-      - '*/*'
+      - application/json
       Accept-Encoding:
       - gzip, deflate
       Connection:
       - keep-alive
       User-Agent:
-      - rpncalc/0.1 (florian@bruhin.software)
+      - rpncalc/0.1 (freya@bruhin.software)
     method: GET
-    uri: https://api.exchangeit.app/v1/currencies/eur/latest?for=chf
+    uri: https://api.exchangeit.app/v2/currencies/eur/latest?for=chf
   response:
     body:
       string: '{"copyright":{"title":"Thank you for choosing Exchange It API","description":"We''re
         excited to see the incredible things you''ll achieve with it. If you have
-        any questions or need support, our team is here to help.","url":"https://exchangeit.app","email":"hello@exchangeit.app"},"data":{"alias":"eur","title":"Euro","rates":[{"alias":"chf","rate":0.9771274994,"date":"2024-05-09T23:59:59.000Z","fluctuation":0.0009838531}]}}'
+        any questions or need support, our team is here to help.","url":"https://exchangeit.app","email":"hello@exchangeit.app"},"data":{"alias":"eur","code":"eur","title":"Euro","rates":[{"alias":"chf","rate":0.9587439179,"code":"chf","date":"2025-03-18T23:59:59.000Z","fluctuation":0.0199734549}]}}'
     headers:
       Access-Control-Allow-Origin:
       - '*'
-      CF-Cache-Status:
-      - DYNAMIC
       CF-RAY:
-      - 881a44a7d868bba3-FRA
+      - 929f35e14907b71e-FRA
       Connection:
       - keep-alive
       Content-Encoding:
@@ -31,23 +29,29 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 10 May 2024 13:27:42 GMT
+      - Wed, 02 Apr 2025 09:13:28 GMT
       ETag:
-      - W/"1a7-5bjLyp+Adq71WOtkIUH/xusZt48"
+      - W/"1c1-5ld9R/xTIUS2nAMa9h85BDwHi6I"
       NEL:
       - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
       Report-To:
-      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=0JmenNOMnl4u3BubbggtG0sRNvLC5uU2%2FqCmo8XACL6hUst92LzJIyMRgYLja%2FrOSjIeVtbEEH3VbecPiZ%2FMbrH%2F%2B7kZcz3VhfOHQ1zSXa28Eh2lVRQrBnG%2BJhC8EoJtwJ1IhYyVajyeD3LELvl4tLQ%3D"}],"group":"cf-nel","max_age":604800}'
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=l7v294nJGrtLcXQ60vE11cFI2b9o8AuyuquwpM8yw%2FOZ9zEJNiLu9tWGs%2FP2we%2BQDWuzWBP7%2F%2Fi8Uj6hteQmHcMzfxE5PqpOUV3rAM%2F8Rv2mc7jZXg7ziqDkNmX2Cen3t%2FbJqQLFxtWxr7EuyFiT7IQ%3D"}],"group":"cf-nel","max_age":604800}'
       Server:
       - cloudflare
       Transfer-Encoding:
       - chunked
+      X-Cache:
+      - HIT
       X-Powered-By:
       - Express
       X-Served-By:
       - api.exchangeit.app
       alt-svc:
       - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      server-timing:
+      - cfL4;desc="?proto=TCP&rtt=19298&min_rtt=18302&rtt_var=5936&sent=5&recv=7&lost=0&retrans=0&sent_bytes=2847&recv_bytes=828&delivery_rate=217477&cwnd=33&unsent_bytes=0&cid=1ca57d6a7b9db6e6&ts=129&x=0"
     status:
       code: 200
       message: OK

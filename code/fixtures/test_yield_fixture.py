@@ -10,9 +10,19 @@ class Client:
         print("\nDisconnecting...")
 
 
+# exercise: [yield]
+
 @pytest.fixture(scope="function")
 def connected_client() -> Iterator[Client]:
     client = Client()
+    client.connect()
+    yield client
+    client.disconnect()
+
+@pytest.fixture
+def connected_client_skip() -> Iterator[Client]:
+    client = Client()
+    pytest.skip("Client not available")
     client.connect()
     yield client
     client.disconnect()

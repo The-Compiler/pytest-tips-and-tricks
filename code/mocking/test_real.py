@@ -12,4 +12,5 @@ def test_convert(rpn: RPNCalculator):
     rpn.stack = [10]
     rpn.evaluate("eur2chf")
     rpn.evaluate("chf2eur")
-    assert rpn.stack[-1] == 10
+    val = rpn.stack[-1]
+    assert val == pytest.approx(10)
