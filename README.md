@@ -1,5 +1,7 @@
 # pytest tips and tricks for a better testsuite
 
+![Snake wrapped around a panflute](./snake.png)
+
 ## Note
 
 The provided code is for 3 days of training, so we're not going to use all of
