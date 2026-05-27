@@ -19,6 +19,7 @@ pytest-md
 pytest-reportlog
 pytest-xdist
 pytest-asyncio
+inline-snapshot[black]
 # Problematic for various reasons:
 # - Doesn't install correctly in PyCharm for some people (?)
 # - Needs pylib, which results in a deprecation warning
