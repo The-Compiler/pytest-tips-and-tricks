@@ -9,9 +9,9 @@ pythonpath = ["."]
 # exercise: [marks]
 
 ### Plugin disables
-We disable pytest-recording (mocking chapter) and pytest-asyncio (plugin tour),
-as they run various fixtures automatically (autouse=True), which interferes
-with exercises.
+# We disable pytest-recording (mocking chapter) and pytest-asyncio (plugin tour),
+# as they run various fixtures automatically (autouse=True), which interferes
+# with exercises.
 addopts = "-p no:recording -p no:asyncio"
 
 ### For marking/
